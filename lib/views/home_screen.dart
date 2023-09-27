@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:ticket_master_clone/views/discover_screen.dart';
 import 'package:ticket_master_clone/views/my_account.dart';
 import 'package:ticket_master_clone/views/my_events_screen.dart';
@@ -36,11 +35,29 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           currentIndex: _currentIndex,
           onTap: _onTabTapped,
-          items: [
+          items: const [
             BottomNavigationBarItem(
-              icon: Lottie.asset("assets/search icon.json", animate: false),
-            ),
+                icon: Icon(
+                  Icons.search_outlined,
+                ),
+                label: 'Discover'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.monitor_heart,
+                ),
+                label: 'For you'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.emoji_events_rounded,
+                ),
+                label: 'My events'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.money_outlined), label: 'Sell'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: 'My account'),
           ],
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.grey,
         ),
         body: Center(
           child: _pages[_currentIndex],
