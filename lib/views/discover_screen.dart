@@ -36,7 +36,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                   children: [
                     const Text(''),
                     Text('ticketmaster',
-                        style: GoogleFonts.sriracha(
+                        style: GoogleFonts.alegreyaSans(
                             textStyle: const TextStyle(
                                 fontSize: 18, color: Colors.white))),
                     CircleAvatar(
