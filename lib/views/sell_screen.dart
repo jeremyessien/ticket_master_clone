@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_master_clone/views/test.dart';
+
+import 'create_ticket.dart';
 
 class SellScreen extends StatefulWidget {
   const SellScreen({Key? key}) : super(key: key);
@@ -10,6 +13,6 @@ class SellScreen extends StatefulWidget {
 class _SellScreenState extends State<SellScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const TicketCreationScreen();
   }
 }

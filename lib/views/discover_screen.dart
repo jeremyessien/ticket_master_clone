@@ -23,7 +23,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87.withOpacity(0.8),
+      backgroundColor: const Color(0xff1e2128),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -36,9 +36,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                   children: [
                     const Text(''),
                     Text('ticketmaster',
-                        style: GoogleFonts.alegreyaSans(
+                        style: GoogleFonts.roboto(
                             textStyle: const TextStyle(
-                                fontSize: 18, color: Colors.white))),
+                                fontSize: 18, color: Colors.white, fontStyle: FontStyle.italic))),
                     CircleAvatar(
                       radius: 16,
                       child: Image.asset('assets/united-states.png'),

@@ -8,7 +8,7 @@ class CustomCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 1,
-      color: Colors.black87.withOpacity(0.5),
+      color: Color(0xff272a31),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -24,7 +24,7 @@ class CustomCardWidget extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.location_on_outlined,
-                      color: Colors.blue,
+                      color: Color(0xff0566ea),
                     ),
                     const SizedBox(width: 5,),
                     Text(
@@ -41,7 +41,7 @@ class CustomCardWidget extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.calendar_today_rounded,
-                      color: Colors.blue,
+                      color:  Color(0xff0566ea),
                     ),
                      const SizedBox(width: 5,),
                     Text(
@@ -73,7 +73,7 @@ class CustomCardWidget extends StatelessWidget {
                   hintText: 'Search for artists, venues....',
                   hintStyle: GoogleFonts.lato(
                       textStyle: const TextStyle(
-                          color: Colors.grey
+                          color: Color(0xffd4d2d5),
                       )),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
@@ -83,7 +83,7 @@ class CustomCardWidget extends StatelessWidget {
                   filled: true,
                   prefixIcon:  Icon(
                     Icons.search_outlined,
-                    color: Colors.grey.shade400,
+                    color:Color(0xffd4d2d5),
                   ),
                 ),
                 style:  GoogleFonts.lato(),

@@ -64,7 +64,7 @@ class _DiscoverScreenContainerState extends State<DiscoverScreenContainer> {
                           artistName[index],
                           style: GoogleFonts.lato(
                             textStyle: const TextStyle(
-                                color: Colors.blue,
+                                color:  Color(0xff0566ea),
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -99,7 +99,7 @@ class _DiscoverScreenContainerState extends State<DiscoverScreenContainer> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color:
-                            _currentIndex == index ? Colors.blue : Colors.grey,
+                            _currentIndex == index ?  Color(0xff0566ea) : Colors.grey,
                       ),
                     );
                   }).toList(),

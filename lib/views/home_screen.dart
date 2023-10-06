@@ -3,6 +3,7 @@ import 'package:ticket_master_clone/views/discover_screen.dart';
 import 'package:ticket_master_clone/views/my_account.dart';
 import 'package:ticket_master_clone/views/my_events_screen.dart';
 import 'package:ticket_master_clone/views/sell_screen.dart';
+import 'package:ticket_master_clone/views/view_event.dart';
 
 import 'for_you_screen.dart';
 
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     const DiscoverScreen(),
     const ForYouScreen(),
-    const MyEventsScreen(),
+    const ViewEvents(),
     const SellScreen(),
     const MyAccountScreen(),
   ];
@@ -35,28 +36,28 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           currentIndex: _currentIndex,
           onTap: _onTabTapped,
-          items: const [
-            BottomNavigationBarItem(
+          items: [
+            const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search_outlined,
+                  size: 36,
                 ),
                 label: 'Discover'),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.monitor_heart,
-                ),
-                label: 'For you'),
+                icon: Image.asset('assets/heart.jpg', height: 36), label: 'For you'),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.emoji_events_rounded,
-                ),
+                icon: Image.asset('assets/ticket icon.jpg', height: 36,),
                 label: 'My events'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.money_outlined), label: 'Sell'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: 'My account'),
+                icon: Image.asset('assets/money.jpg', height: 36), label: 'Sell'),
+            const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_circle_rounded,
+                  size: 38,
+                ),
+                label: 'My account'),
           ],
-          selectedItemColor: Colors.blue,
+          selectedItemColor: const Color(0xff0566ea),
           unselectedItemColor: Colors.grey,
         ),
         body: Center(
