@@ -39,9 +39,19 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                         style: GoogleFonts.roboto(
                             textStyle: const TextStyle(
                                 fontSize: 18, color: Colors.white, fontStyle: FontStyle.italic))),
-                    CircleAvatar(
-                      radius: 16,
-                      child: Image.asset('assets/united-states.png'),
+                    Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 2,
+                        ),
+                      ),
+                      child: CircleAvatar(
+                        radius: 12,
+                        child: Image.asset('assets/united-states.png'),
+                      ),
                     ),
                   ],
                 ),

@@ -15,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _bottomNavBarVisible = true;
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const DiscoverScreen(),
@@ -29,38 +30,48 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _toggleBottomNavBar() {
+    setState(() {
+      _bottomNavBarVisible = !_bottomNavBarVisible;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          currentIndex: _currentIndex,
-          onTap: _onTabTapped,
-          items: [
-            const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search_outlined,
-                  size: 36,
-                ),
-                label: 'Discover'),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/heart.jpg', height: 36), label: 'For you'),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/ticket icon.jpg', height: 36,),
-                label: 'My events'),
-            BottomNavigationBarItem(
-                icon: Image.asset('assets/money.jpg', height: 36), label: 'Sell'),
-            const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_circle_rounded,
-                  size: 38,
-                ),
-                label: 'My account'),
-          ],
-          selectedItemColor: const Color(0xff0566ea),
-          unselectedItemColor: Colors.grey,
+        bottomNavigationBar: Visibility(
+          visible: _bottomNavBarVisible,
+          child: BottomNavigationBar(
+            elevation: 0,
+            currentIndex: _currentIndex,
+            onTap: _onTabTapped,
+            items: [
+              const BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.search_outlined,
+                    size: 36,
+                  ),
+                  label: 'Discover'),
+              BottomNavigationBarItem(
+                  icon: Image.asset('assets/heart.jpg', height: 36), label: 'For you'),
+              BottomNavigationBarItem(
+                  icon: Image.asset('assets/ticket icon.jpg', height: 36,),
+                  label: 'My events'),
+              BottomNavigationBarItem(
+                  icon: Image.asset('assets/money.jpg', height: 36), label: 'Sell'),
+              const BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.account_circle_rounded,
+                    size: 38,
+                  ),
+                  label: 'My account'),
+            ],
+            selectedItemColor: const Color(0xff0566ea),
+            unselectedItemColor: Colors.grey,
+          ),
         ),
-        body: Center(
+        body: GestureDetector(
+          onTap: _toggleBottomNavBar,
           child: _pages[_currentIndex],
         ));
   }

@@ -92,7 +92,7 @@ class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
         backgroundColor: Colors.blue,
         title: const Text(
           "My Tickets",
-          style: TextStyle( color: Colors.white),
+          style: TextStyle(color: Colors.white, fontSize: 15),
         ),
         centerTitle: true,
         leading: IconButton(
@@ -109,10 +109,13 @@ class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
       body: ticketDetails.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 20, bottom: 10),
+              padding: const EdgeInsets.only(bottom: 10),
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: 2,
+                  ),
                   CarouselSlider.builder(
                     itemCount: ticketDetails.length,
                     itemBuilder: (context, index, realIndex) {
@@ -166,8 +169,7 @@ class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
                           width: 150,
                         ),
                         TmButton(
-                          onPressed: () {
-                          },
+                          onPressed: () {},
                           borderRadius: const Radius.circular(5),
                           buttonColor: Colors.blue,
                           buttonTitle: 'Sell',
@@ -197,25 +199,30 @@ class TicketCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(12.0), // Adjust the value as needed
                   topRight: Radius.circular(12.0), // Adjust the value as needed
                 ),
-                gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.blue, // Top color (light blue)
-                    Color(0xff0e192a), // Bottom color (lighter shade of black)
-                  ],
-                ),
-                image: DecorationImage(
-                  image: AssetImage(ticketDetails['imgname'] ??
-                      'N/A'), // Replace with your image path
-                  fit: BoxFit.scaleDown,
-                ),
+                // gradient: const LinearGradient(
+                //   begin: Alignment.topCenter,
+                //   end: Alignment.bottomCenter,
+                //   colors: [
+                //     Colors.blue, // Top color (light blue)
+                //     Color(0xff0e192a), // Bottom color (lighter shade of black)
+                //   ],
+                // ),
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //     ticketDetails['imgname'] ?? 'N/A',
+                //   ), // Replace with your image path
+                //   fit: BoxFit.fill,
+                //   colorFilter: ColorFilter.mode(
+                //     Colors.black
+                //         .withOpacity(0.6), // Adjust the opacity as needed
+                //     BlendMode.dstOut, // You can try different BlendMode values
+                //   ),
+                // ),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(0.4),
@@ -228,94 +235,163 @@ class TicketCard extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      height: 30,
+                      padding: const EdgeInsets.only(top: 8, bottom: 15),
                       alignment: Alignment.center,
                       width: double.maxFinite,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.blue.withOpacity(0.4),
-                            spreadRadius: 2,
-                            blurRadius: 2,
-                            offset: const Offset(
-                                0, 2), // changes the position of the shadow
-                          ),
-                        ],
-                        borderRadius: const BorderRadius.only(
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
                               12.0), // Adjust the value as needed
                           topRight: Radius.circular(
                               12.0), // Adjust the value as needed
                         ),
                       ),
-                      child: Text(
-                        ticketDetails['tickettitle'] ?? 'N/A',
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 15.0, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('SEC', style: TextStyle(color: Colors.white)),
-                          Text('ROW', style: TextStyle(color: Colors.white)),
-                          Text('SEAT', style: TextStyle(color: Colors.white)),
+                          Text(
+                            ticketDetails['tickettitle'] ?? 'N/A',
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          // const Padding(
+                          //   padding: EdgeInsets.only(left: 20.0, right: 20),
+                          //   child: Row(
+                          //     crossAxisAlignment: CrossAxisAlignment.center,
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       Text('SEC',
+                          //           style: TextStyle(color: Colors.white)),
+                          //       Text('ROW',
+                          //           style: TextStyle(color: Colors.white)),
+                          //       Text('SEAT',
+                          //           style: TextStyle(color: Colors.white)),
+                          //     ],
+                          //   ),
+                          // ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                RichText(text: TextSpan(
+                                    children: [
+                                      const TextSpan(
+                                          text: 'SEC\n'
+                                      ),
+                                      TextSpan(
+                                          text: '${ticketDetails['section'] ?? 'N/A'}'
+                                      )
+                                    ]
+                                )),
+                                RichText(text: TextSpan(
+                                    children: [
+                                      const TextSpan(
+                                          text: 'ROW\n'
+                                      ),
+                                      TextSpan(
+                                          text: '  ${ticketDetails['roll'] ?? 'N/A'}'
+                                      )
+                                    ]
+                                )),
+                                RichText(text: TextSpan(
+                                    children: [
+                                      const TextSpan(
+                                          text: 'SEAT\n'
+                                      ),
+                                      TextSpan(
+                                          text: ' ${ticketDetails['seat'] ?? 'N/A'}'
+                                      )
+                                    ]
+                                )),
+                              ],
+                            ),
+                          ),
+                          // Padding(
+                          //   padding:
+                          //       const EdgeInsets.only(left: 25.0, right: 26),
+                          //   child: Row(
+                          //       crossAxisAlignment: CrossAxisAlignment.center,
+                          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       Text(ticketDetails['section'] ?? 'N/A',
+                          //           style:
+                          //               const TextStyle(color: Colors.white)),
+                          //       Text(ticketDetails['roll'] ?? 'N/A',
+                          //           style:
+                          //               const TextStyle(color: Colors.white)),
+                          //       Text(ticketDetails['seat'] ?? 'N/A',
+                          //           style:
+                          //               const TextStyle(color: Colors.white)),
+                          //     ],
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15.0, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(ticketDetails['section'] ?? 'N/A',
-                              style: const TextStyle(color: Colors.white)),
-                          Text(ticketDetails['roll'] ?? 'N/A',
-                              style: const TextStyle(color: Colors.white)),
-                          Text(ticketDetails['seat'] ?? 'N/A',
-                              style: const TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 80,
-                    ),
-                    Text(ticketDetails['tourtitle'] ?? 'N/A',
-                        style: const TextStyle(color: Colors.white)),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0, right: 5),
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: RichText(
-                          text: TextSpan(
-                            style: DefaultTextStyle.of(context).style,
-                            children: [
-                              TextSpan(
-                                text: '${ticketDetails['showdate'] ?? 'N/A'}•',
-                                style: GoogleFonts.alegreyaSans(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    ' Ticketmaster ${ticketDetails['venue'] ?? 'N/A'}',
-                                style: GoogleFonts.alegreyaSans(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.blue, // Top color (light blue)
+                            Color(0xff0e192a), // Bottom color (lighter shade of black)
+                          ],
+                        ),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            ticketDetails['imgname'] ?? 'N/A',
+                          ), // Replace with your image path
+                          fit: BoxFit.fill,
+                          colorFilter: ColorFilter.mode(
+                            Colors.black
+                                .withOpacity(0.6), // Adjust the opacity as needed
+                            BlendMode.dstOut, // You can try different BlendMode values
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
+                      height: 135,
+                      width: double.maxFinite,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(ticketDetails['tourtitle'] ?? 'N/A',
+                              style: const TextStyle(color: Colors.white)),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 10),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: RichText(
+                                text: TextSpan(
+                                  style: DefaultTextStyle.of(context).style,
+                                  children: [
+                                    TextSpan(
+                                      text: '${ticketDetails['showdate'] ?? 'N/A'} •',
+                                      style: GoogleFonts.alegreyaSans(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                      ' Ticketmaster ${ticketDetails['venue'] ?? 'N/A'}',
+                                      style: GoogleFonts.alegreyaSans(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

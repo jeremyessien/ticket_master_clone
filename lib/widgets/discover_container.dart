@@ -14,9 +14,8 @@ class DiscoverScreenContainer extends StatefulWidget {
 class _DiscoverScreenContainerState extends State<DiscoverScreenContainer> {
   int _currentIndex = 0;
   final List<String> _images = [
-    'https://s1.ticketm.net/dam/a/de2/dfa2269e-56b8-48b9-98b3-c829f47d2de2_RETINA_PORTRAIT_3_2.jpg',
-    'https://s1.ticketm.net/dam/a/900/d0e95074-2a57-4b0e-8cce-781b43a2a900_RETINA_PORTRAIT_3_2.jpg'
-    // Add more image paths here
+    'assets/doj.jpeg',
+    'assets/trav.jpg'
   ];
   final List<String> artistName = ['Doja Cat', 'Travis Scott', "Guns N' Roses"];
   final List<String> description = [
@@ -46,7 +45,7 @@ class _DiscoverScreenContainerState extends State<DiscoverScreenContainer> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(
+                  Image.asset(
                     _images[index],
                     height: 150,
                     fit: BoxFit.fitWidth,
